@@ -34,8 +34,10 @@
         if($sql->rowCount() > 0){
             $array =$sql->fetchAll();
             return $array;
+        }else{
+            return $array;
         }
-        return $array;
+        
      }
 
      public function getTodasReservas(){

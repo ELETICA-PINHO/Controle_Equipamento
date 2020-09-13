@@ -2,35 +2,28 @@
  include 'conf/conf.php';
 
 $reserva = new Reserva($pdo);
-
-
-$res =$reserva->verificaDisponibilidade(2);
-
-if($res){
-    echo "tru".$res;
-}else{
-    echo "false".$res;
-}
+$veiculo = new Veiculo($pdo);
 
 
 ?>
 
-<table border="1" width="50%">
-    <tr>
-        <th>Nome</th>
-        <th>Data Inicio</th>
-        <th>Data Fim</th>
-        <th>Equipamento</th>
-    </tr>
-    <?php foreach($reserva->getReservasAtivas() as $lista):
-        $data_i = date('H:i:s  d-m-Y', strtotime($lista['data_inicio']));
-        ?>
-    <tr>
-        <td><?php echo $lista['usuarios'];?></td>
-        <td><?php echo $data_i;?></td>
-        <td><?php echo $lista['data_fim'];?></td>
-        <td><?php echo $lista['data_fim'];?></td>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
 
-    </tr>
-    <?php endforeach;?>
-</table>
+<a href="veiculo_uso.php">Veiculos em Uso</a><br><br>
+<a href="veiculo_disponivel.php">Veiculos Disponivel</a><br><br>
+<a href="#">Cadastro Veiculo</a><br><br>
+<a href="#">Cadastro Operador</a><br><br>
+<a href="#">Veiculos  Manutenção</a><br><br>
+<a href="#">Consulta Veiculo</a><br><br>
+<a href="#">Consulta Operador</a><br><br>
+<a href="#">Sair</a><br><br><br><br>
+    
+</body>
+</html>
