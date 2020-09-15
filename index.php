@@ -1,6 +1,13 @@
 <?php 
  include 'conf/conf.php';
 
+if(empty($_SESSION['id'])){
+   header("Location: login.php"); 
+}
+
+
+
+
 $reserva = new Reserva($pdo);
 $veiculo = new Veiculo($pdo);
 
@@ -8,7 +15,7 @@ $veiculo = new Veiculo($pdo);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
