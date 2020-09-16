@@ -1,12 +1,11 @@
 <?php 
- include 'conf/conf.php';
+session_start();
+include 'conf/conf.php';
 
-if(empty($_SESSION['id'])){
+if(!isset($_SESSION['logado'])){
    header("Location: login.php"); 
+   exit;
 }
-
-
-
 
 $reserva = new Reserva($pdo);
 $veiculo = new Veiculo($pdo);
@@ -30,7 +29,7 @@ $veiculo = new Veiculo($pdo);
 <a href="#">Veiculos  Manutenção</a><br><br>
 <a href="#">Consulta Veiculo</a><br><br>
 <a href="#">Consulta Operador</a><br><br>
-<a href="#">Sair</a><br><br><br><br>
+<a href="sair.php">Sair</a><br><br><br><br>
     
 </body>
 </html>
