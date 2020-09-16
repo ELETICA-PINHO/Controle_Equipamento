@@ -13,13 +13,14 @@ $veiculo = new Veiculo($pdo);
  * !será feito das 00:00:00 há 23:59:00 do dia atual
  * ? caso sejá preenchido algum dado de filtro será 
  * ? feito conforme dados capturados do formulario
- * ? atráves do POST  
+ * ? atráves do POST
+ * !houve uma mudança no projeto então o else abaixo não faz mais tando sentido
+ * ! agora sistema faz busca por equipamento que não foram dados baixa.    
 */ 
-    if(!empty($_POST['dataI']) && !empty($_POST['dataF']) && isset($_POST['filtro']) ){
+    if(!empty($_POST['dataI']) && !empty($_POST['dataF']) && isset($_POST['filtro'])){
         $dataI = $_POST['dataI'];
         $dataF = $_POST['dataF'];
         $filtro = $_POST['filtro'];
-        echo $filtro = $_POST['filtro'];
         
     }else{
         $dataI = new DateTime('00:00:00');  
@@ -60,14 +61,17 @@ Data Final:<br>
 </form>
 
 
-<table border="1" width="50%">
+<table border="1" width="70%">
     <tr>
         <th>Operador</th>
         <th>Data Inicio</th>
         <th>Data Fim</th>
         <th>Equipamento</th>
+        <th>Observação Entrada</th>
+        <th>Observação Saida</th>
         <th>Devolução</th>
-        <th>Observação</th>
+    
+        
     </tr>
 
     <?php foreach($reserva->getReservasAtivas($dataI,$dataF,$filtro) as $lista_r):
@@ -87,11 +91,10 @@ Data Final:<br>
         <td><?php echo $data_f;?></td>
         <td><?php echo $lista_v['veiculo'];?></td>
         <?php if(empty($lista_r['data_fim'])):?>
-        <td><a href="">Devolução</a></td>
-        <td></td>
+        <td><?php echo $lista_r['observacao_entrada'];?></td>
+        <td><?php echo $lista_r['observacao_saida'];?></td>
+        <td><a href="devolucao.php?id=<?php echo$lista_r['id'];?>">Devolução</a></td>
         <?php else:?>
-        <td>Com Baixa</td>
-        <td><?php echo $lista_r['observacao'];?></td>
         <?php endif;?>
     </tr>
     <?php endforeach;

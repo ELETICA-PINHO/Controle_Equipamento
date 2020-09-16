@@ -21,8 +21,21 @@
 
      }
 
-     public function reservarVeiculo(){
+     public function fazerReserva($id_equipamento, $data_inicio, $usuarios, $observacao_entrada){
+       
+        $sql = $this->pdo->prepare("INSERT INTO reservas (id_equipamento, data_inicio, usuarios, observacao_entrada) VALUES (:id_equipamento, :data_inicio, :usuarios, :observacao_entrada) ");
+         
+        $sql->bindValue(":id_equipamento",$id_equipamento);
+         $sql->bindValue(":data_inicio", $data_inicio);
+         $sql->bindValue(":usuarios", $usuarios);
+         $sql->bindValue(":observacao_entrada", $observacao_entrada);
+         $sql->execute(); 
 
+         if($sql->rowCount() > 0 ){
+             return true;
+         }else{
+             return false;
+         }
 
      }
 
@@ -31,7 +44,7 @@
     
         switch ($status) {
             case '-1':
-                $sql = "SELECT * FROM reservas WHERE status = '1' AND data_inicio BETWEEN '$data_inicio' AND '$data_fim'";
+                $sql = "SELECT * FROM reservas WHERE status = '1'"; // PARA CONSULTAR SOMENTE AS RESERVAS ATIVAS SOMENTE  GERAL SEM FILTROS DE DIA  "SELECT * FROM reservas WHERE status = '1'"; 
                 break;
             case '0':
                 $sql = "SELECT * FROM reservas WHERE status = '0' AND data_inicio BETWEEN '$data_inicio' AND '$data_fim' or  data_fim  BETWEEN '$data_inicio' AND '$data_fim' ";
@@ -45,6 +58,8 @@
                 $sql = "SELECT * FROM reservas  WHERE data_inicio BETWEEN '$data_inicio' AND '$data_fim'";
                 break;
         }
+
+
         $sql= $this->pdo->prepare($sql);
         $sql->execute();
 
@@ -69,6 +84,22 @@
             return $array;
         }
         
+     }
+
+     public function fazerDevolucao($id, $data_fim, $observacao_saida){
+
+        $sql = $this->pdo->prepare("UPDATE  reservas SET status = '0', data_fim = :data_fim, observacao_saida = :observacao_saida WHERE id = :id ");
+        $sql->bindValue(":data_fim", $data_fim);
+        $sql->bindValue(":observacao_saida", $observacao_saida);
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+
+        if($sql->rowCount() > 0 ){
+            return true;
+        }else{
+            return false;
+        }
+
      }
 
    
