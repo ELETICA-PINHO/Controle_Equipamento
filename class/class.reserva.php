@@ -31,7 +31,7 @@
     
         switch ($status) {
             case '-1':
-                $sql = "SELECT * FROM reservas WHERE status = '1'";
+                $sql = "SELECT * FROM reservas WHERE status = '1' AND data_inicio BETWEEN '$data_inicio' AND '$data_fim'";
                 break;
             case '0':
                 $sql = "SELECT * FROM reservas WHERE status = '0' AND data_inicio BETWEEN '$data_inicio' AND '$data_fim' or  data_fim  BETWEEN '$data_inicio' AND '$data_fim' ";
