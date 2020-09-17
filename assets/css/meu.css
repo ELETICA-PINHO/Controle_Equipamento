@@ -1,0 +1,23 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: rgb(226, 225, 225);
+  }
+
+
+.h1-veiculo-disponivel{
+    padding-left: 250px;
+    margin-bottom:30px;
+    margin-top: 10px;
+}
+
+.div-botao{
+    max-width: 630px;
+    padding-left: 350px;
+    margin-bottom:10px;
+    margin-top: 30px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; 
+   
+    
+}
