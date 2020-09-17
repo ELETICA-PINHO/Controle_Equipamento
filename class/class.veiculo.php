@@ -54,11 +54,20 @@
 
         }
 
+        public function cadastrarVeiculo($veiculo,$placa){
 
+            $sql = $this->pdo->prepare("INSERT INTO equipamento SET veiculo = :veiculo, placa = :placa, data_cadastro = now()");
+            $sql->bindValue(":veiculo", $veiculo);
+            $sql->bindValue(":placa", $placa);
+            $sql->execute();
 
+            if($sql->rowCount() > 0 ){
+                return true;
+            }else{
+                return false;
+            }
 
-
-
+        }
 
 
     }

@@ -8,7 +8,7 @@ $logs->registroGetal("acessou pagina trocar senha");
 
 ?>
 
-<form action="" method="POST">
+<form  method="POST">
 <h1>Digite seu CPF ou E-mail para recuperar a senha</h1>
 
 CPF<br>

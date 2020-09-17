@@ -4,17 +4,10 @@
 $reserva = new Reserva($pdo);
 $veiculo = new Veiculo($pdo);
 
-/*
-if($reserva->verificaDisponibilidade('3')){
-    echo"disponivel";
- }   else{
-     echo "em uso";
- }
-*/
-
-
 
 ?>
+
+<h1>Equipamentos Disponiveis</h1>
 
 <table border="1" width="50%">
     <tr>
