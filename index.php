@@ -19,6 +19,12 @@ $veiculo = new Veiculo($pdo);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <script type="text/javascript" src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js"></script>
+
+
 </head>
 <body>
 
@@ -30,6 +36,9 @@ $veiculo = new Veiculo($pdo);
 <!-- <a href="consulta.php">Consulta </a><br><br> 
 <a href="#">Consulta Operador</a><br><br> -->
 <a href="sair.php">Sair</a><br><br><br><br>
+
+
+    
     
 </body>
 </html>
