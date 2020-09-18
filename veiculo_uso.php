@@ -85,7 +85,7 @@ $veiculo = new Veiculo($pdo);
                     <th>Operador</th>
                     <th>Data Inicio</th>
                     <th>Data Fim</th>
-                    <th>Equipamento</th>
+                    <th>Veiculo</th>
                     <th>Observação Entrada</th>
                     <th>Observação Saida</th>
                     <th>Devolução</th>
@@ -93,9 +93,9 @@ $veiculo = new Veiculo($pdo);
             </thead>
             <tbody>   
                 <?php foreach($reserva->getReservasAtivas($dataI,$dataF,$filtro) as $lista_r):
-                    $data_i = date('H:i:s ---- d-m-Y', strtotime($lista_r['data_inicio']));
+                    $data_i = date('H:i:s  d-m-Y', strtotime($lista_r['data_inicio']));
                     if(!empty($lista_r['data_fim'])){
-                    $data_f = date('H:i:s ---- d-m-Y', strtotime($lista_r['data_fim']));
+                    $data_f = date('H:i:s  d-m-Y', strtotime($lista_r['data_fim']));
                     }else{
                         $data_f = "";
                     }
@@ -107,9 +107,9 @@ $veiculo = new Veiculo($pdo);
                 <td><?php echo $data_i;?></td>
                 <td><?php echo $data_f;?></td>
                 <td><?php echo $lista_v['veiculo'];?></td>
-                <?php if(empty($lista_r['data_fim'])):?>
                 <td><?php echo $lista_r['observacao_entrada'];?></td>
                 <td><?php echo $lista_r['observacao_saida'];?></td>
+                <?php if(empty($lista_r['data_fim'])):?>
                 <td><a class="btn btn-primary btn-block " href="devolucao.php?id=<?php echo$lista_r['id'];?>">Devolução</a></td>
                 <?php else:?>
                 <?php endif;?>
